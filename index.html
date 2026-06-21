@@ -16,26 +16,59 @@ html, body {
 
 body {
     background-color: #5b86cf;
+}
+
+:root {
+    --tile-height: 512px;
+}
+
+.layer {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: var(--tile-height);
 
     background-image: url("assets/game_bg_01_001.png");
-    background-repeat: repeat;
-    background-size: 512px 512px;
+    background-repeat: repeat-x;
+    background-size: auto 100%;
 
     animation: scrollBg 10s linear infinite;
 }
 
+.flip {
+    transform: scaleY(-1);
+}
+
+.l1 { bottom: 0px; }
+.l2 { bottom: 512px; }
+
+.l3 { bottom: 1024px; }
+.l4 { bottom: 1536px; }
+
+.l5 { bottom: 2048px; }
+.l6 { bottom: 2560px; }
+
 @keyframes scrollBg {
     from {
-        background-position: 0 0;
+        background-position-x: 0;
     }
     to {
-        background-position: -512px 0;
+        background-position-x: -512px;
     }
 }
 </style>
 
 </head>
 <body>
+
+<div class="layer l1"></div>
+<div class="layer l2 flip"></div>
+
+<div class="layer l3"></div>
+<div class="layer l4 flip"></div>
+
+<div class="layer l5"></div>
+<div class="layer l6 flip"></div>
 
 </body>
 </html>
