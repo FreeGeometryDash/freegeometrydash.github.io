@@ -9,53 +9,33 @@
 html, body {
     margin: 0;
     padding: 0;
+    width: 100%;
     height: 100%;
     overflow: hidden;
 }
 
 body {
-    width: 100%;
-    height: 100%;
+    background-color: #5b86cf;
 
     background-image: url("assets/game_bg_01_001.png");
-    background-repeat: repeat-x;
+    background-repeat: repeat;
+    background-size: 512px 512px;
 
     animation: scrollBg 10s linear infinite;
 }
 
 @keyframes scrollBg {
-    from { background-position: 0 0; }
-    to { background-position: -1000px 0; }
-}
-
-/* 🎮 przyciski */
-.menu {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-button {
-    padding: 12px 30px;
-    font-size: 18px;
-    cursor: pointer;
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: -512px 0;
+    }
 }
 </style>
 
 </head>
-
 <body>
-
-<div class="menu">
-    <button onclick="alert('Start!')">Start</button>
-    <button>Opcje</button>
-    <button>Wyjście</button>
-</div>
 
 </body>
 </html>
