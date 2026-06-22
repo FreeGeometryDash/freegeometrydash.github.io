@@ -9,26 +9,20 @@
 html, body {
     margin: 0;
     padding: 0;
-    width: 100%;
-    height: 100%;
     overflow-y: scroll;
     overflow-x: hidden;
 }
 
 body {
     background: #5b86cf;
-    min-height: 10240px; /* np. 10 par */
-}
-
-:root {
-    --tile-height: 512px;
+    min-height: 10240px;
 }
 
 .layer {
     position: absolute;
     left: 0;
     width: 100%;
-    height: var(--tile-height);
+    height: 512px;
 
     background-image: url("assets/game_bg_01_001.png");
     background-repeat: repeat-x;
@@ -41,54 +35,31 @@ body {
     transform: scaleY(-1);
 }
 
-.l1 { top: 0px; }
-.l2 { bottom: 512px; }
-
-.l3 { bottom: 1024px; }
-.l4 { bottom: 1536px; }
-
-.l5 { bottom: 2048px; }
-.l6 { bottom: 2560px; }
-
 @keyframes scrollBg {
-    from {
-        background-position-x: 0;
-    }
-    to {
-        background-position-x: -512px;
-    }
+    from { background-position-x: 0; }
+    to { background-position-x: -512px; }
 }
 </style>
 
 </head>
 <body>
 
-<div class="layer" style="top:0px"></div>
-<div class="layer flip" style="top:512px"></div>
+<script>
+const PAIRS = 10; // ← TU zmieniasz liczbę par
 
-<div class="layer" style="top:1024px"></div>
-<div class="layer flip" style="top:1536px"></div>
+for(let i = 0; i < PAIRS * 2; i++) {
+    const layer = document.createElement("div");
 
-<div class="layer" style="top:2048px"></div>
-<div class="layer flip" style="top:2560px"></div>
+    layer.className = "layer";
+    if(i % 2 === 1) layer.classList.add("flip");
 
-<div class="layer" style="top:3072px"></div>
-<div class="layer flip" style="top:3584px"></div>
+    layer.style.top = (i * 512) + "px";
 
-<div class="layer" style="top:4096px"></div>
-<div class="layer flip" style="top:4608px"></div>
+    document.body.appendChild(layer);
+}
 
-<div class="layer" style="top:5120px"></div>
-<div class="layer flip" style="top:5632px"></div>
-
-<div class="layer" style="top:6144px"></div>
-<div class="layer flip" style="top:6656px"></div>
-
-<div class="layer" style="top:7168px"></div>
-<div class="layer flip" style="top:7680px"></div>
-
-<div class="layer" style="top:8192px"></div>
-<div class="layer flip" style="top:8704px"></div>
+document.body.style.minHeight = (PAIRS * 2 * 512) + "px";
+</script>
 
 </body>
 </html>
